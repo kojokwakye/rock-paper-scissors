@@ -2,10 +2,15 @@ function computerPlay() {
   const plays = ["rock", "paper", "scissors"];
   return plays[Math.floor(Math.random() * plays.length)];
 }
-console.log(computerPlay());
 
 function playRound(playerSelection, computerSelection) {
-  return 'hahaha'
+  if (computerSelection === playerSelection) {
+    return "its a tie";
+  } else if (computerSelection === "paper") {
+    return "computer picked paper. you win";
+  } else {
+    return "computer picked scissors. you win!";
+  }
 }
 
 const playerSelection = "rock";
