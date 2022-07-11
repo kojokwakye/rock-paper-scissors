@@ -23,7 +23,24 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-const playerSelection = prompt("rock, paper or scissors").toLowerCase();
+// const playerSelection = prompt("rock, paper or scissors: ").toLowerCase();
+// console.log(computerSelection);
+// console.log(playRound(playerSelection, computerSelection));
 const computerSelection = computerPlay();
-console.log(computerSelection);
-console.log(playRound(playerSelection, computerSelection));
+
+
+//  play five rounds 
+// function game() {
+//   const playerSelection = prompt("rock, paper or scissors: ").toLowerCase();
+//   console.log(computerSelection);
+
+//   playRound(playerSelection, computerSelection);
+//   for (let i = 0; i < 5; i++) {
+//     if (computerSelection === playerSelection) {
+//       console.log("tie");
+//       break;
+//     }
+//   }
+// }
+
+// game();
