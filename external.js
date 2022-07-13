@@ -4,43 +4,40 @@ function computerPlay() {
 }
 
 function playRound(playerSelection, computerSelection) {
+  let win = "you win";
+  let lose = "you lose";
+  let tie = "it is a tie";
+
   if (computerSelection === playerSelection) {
-    return "its a tie";
+    return tie;
   } else if (
     (computerSelection === "rock" && playerSelection === "paper") ||
     (computerSelection === "scissors" && playerSelection === "rock") ||
     (computerSelection === "paper" && playerSelection === "scissors")
   ) {
-    return "you win";
+    return win;
   } else if (
     (computerSelection === "paper" && playerSelection === "rock") ||
     (computerSelection === "rock" && playerSelection === "scissors") ||
     (computerSelection === "scissors" && playerSelection === "paper")
   ) {
-    return "you lose";
+    return lose;
   } else {
     alert("pick one item, please");
   }
 }
 
-// const playerSelection = prompt("rock, paper or scissors: ").toLowerCase();
-// console.log(computerSelection);
-// console.log(playRound(playerSelection, computerSelection));
+let computerScore = parseInt(0);
+let playerScore = parseInt(0);
+
+const playerSelection = prompt(
+  "pick a move. rock, paper or scissors:"
+).toLowerCase();
 const computerSelection = computerPlay();
+console.log("you picked " + playerSelection);
+console.log("computer picked " + computerSelection);
+console.log(playRound(playerSelection, computerSelection));
 
-
-//  play five rounds 
-// function game() {
-//   const playerSelection = prompt("rock, paper or scissors: ").toLowerCase();
-//   console.log(computerSelection);
-
-//   playRound(playerSelection, computerSelection);
-//   for (let i = 0; i < 5; i++) {
-//     if (computerSelection === playerSelection) {
-//       console.log("tie");
-//       break;
-//     }
-//   }
-// }
-
-// game();
+for (let i = 0; i < 5; i++) {
+  
+}
