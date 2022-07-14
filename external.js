@@ -39,7 +39,7 @@ function game() {
     const computerSelection = computerPlay();
 
     if (playRound(playerSelection, computerSelection) === tie) {
-      i--
+      i--;
       console.log(tie);
     } else if (playRound(playerSelection, computerSelection) === win) {
       playerScore++;
@@ -51,7 +51,6 @@ function game() {
       alert("pick an item");
     }
 
-    // console.log("you picked " + playerSelection);
     console.log("computer picked " + computerSelection);
   }
   console.log("you got " + playerScore, "computer got " + computerScore);
