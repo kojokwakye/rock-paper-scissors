@@ -4,10 +4,6 @@ function computerPlay() {
 }
 
 function playRound(playerSelection, computerSelection) {
-  // let win = "you win";
-  // let lose = "you lose";
-  // let tie = "it is a tie";
-
   if (computerSelection === playerSelection) {
     return tie;
   } else if (
@@ -31,30 +27,32 @@ const win = "you win";
 const lose = "you lose";
 const tie = "it is a tie";
 
-const playerSelection = prompt(
-  "pick a move. rock, paper or scissors:"
-).toLowerCase();
-const computerSelection = computerPlay();
-// console.log("you picked " + playerSelection);
-// console.log("computer picked " + computerSelection);
-
 function game() {
-  playRound(playerSelection, computerSelection);
   let computerScore = parseInt(0);
   let playerScore = parseInt(0);
 
   //  LOOP
-  for (let i = 0; i < 2; i++) {
-    let playerSelection = prompt(
+  for (let i = 0; i < 5; i++) {
+    const playerSelection = prompt(
       "pick a move. rock, paper or scissors:"
     ).toLowerCase();
+    const computerSelection = computerPlay();
 
-   
+    if (playRound(playerSelection, computerSelection) === tie) {
+      console.log(tie);
+    } else if (playRound(playerSelection, computerSelection) === win) {
+      playerScore++;
+      console.log(win);
+    } else if (playRound(playerSelection, computerSelection) === lose) {
+      computerScore++;
+      console.log(lose);
+    } else {
+      alert("pick an item");
+    }
 
     console.log("you picked " + playerSelection);
     console.log("computer picked " + computerSelection);
   }
   console.log(playerScore, computerScore);
 }
-console.log(playRound(playerSelection, computerSelection));
 game();
