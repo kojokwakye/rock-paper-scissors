@@ -25,7 +25,7 @@ function playRound(playerSelection, computerSelection) {
 
 const win = "you win";
 const lose = "you lose";
-const tie = "it is a tie";
+const tie = "it's a tie";
 
 function game() {
   let computerScore = parseInt(0);
@@ -53,7 +53,7 @@ function game() {
 
     console.log("computer picked " + computerSelection);
   }
-  console.log("you got " + playerScore, "computer got " + computerScore);
+  console.log("you got " + playerScore, "& computer got " + computerScore);
   if (playerScore >= 3) {
     console.log("you won this round");
   } else {
