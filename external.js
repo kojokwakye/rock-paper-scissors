@@ -31,7 +31,6 @@ function game() {
   let computerScore = parseInt(0);
   let playerScore = parseInt(0);
 
-  //  LOOP
   for (let i = 0; i < 5; i++) {
     const playerSelection = prompt(
       "pick a move. rock, paper or scissors:"
@@ -50,7 +49,6 @@ function game() {
     } else {
       alert("pick an item");
     }
-
     console.log("computer picked " + computerSelection);
   }
   console.log("you got " + playerScore, "& computer got " + computerScore);
