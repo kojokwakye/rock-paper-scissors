@@ -49,7 +49,11 @@ function game() {
     } else {
       alert("pick an item");
     }
-    console.log("computer picked " + computerSelection);
+    console.log(
+      "you picked " + playerSelection,
+      "but",
+      "computer picked " + computerSelection
+    );
   }
   console.log("you got " + playerScore, "& computer got " + computerScore);
   if (playerScore >= 3) {
