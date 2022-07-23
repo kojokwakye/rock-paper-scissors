@@ -1,2 +1,3 @@
 # rock-paper-scissors
-rock paper scissors project from the odin project
+console based rock paper scissors game for the odin project
+
