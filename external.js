@@ -1,70 +1,85 @@
-let computerScore = parseInt(0);
-let playerScore = parseInt(0);
-
 function computerPlay() {
   const plays = ["rock", "paper", "scissors"];
   return plays[Math.floor(Math.random() * plays.length)];
 }
 
+// scores
 const win = "you win";
 const lose = "you lose";
 const tie = "it's a tie";
 
-const computerSelection = computerPlay();
-// let playerSelection = button;
-
 const button = document.querySelectorAll("button");
 button.forEach((button) => {
-  button.addEventListener("click", () => {
-    let playerSelection = button.id;
+  button.addEventListener("click", (e) => {
+    const playerSelection = e.target.id;
     const computerSelection = computerPlay();
-    console.log(playerSelection, computerSelection);
+    const result = playRound(playerSelection, computerSelection);
+    console.log(`Player: ${playerSelection}, Computer: ${computerSelection}`);
+    console.log(result);
   });
 });
 
+// playround function
 function playRound(playerSelection, computerSelection) {
+  if (
+    playerSelection !== "rock" &&
+    playerSelection !== "paper" &&
+    playerSelection !== "scissors"
+  ) {
+    // Display an error message to the user
+    console.log("invalid input");
+    return;
+  }
+
   if (computerSelection === playerSelection) {
-    return tie;
+    return "tie";
   } else if (
     (computerSelection === "rock" && playerSelection === "paper") ||
     (computerSelection === "scissors" && playerSelection === "rock") ||
     (computerSelection === "paper" && playerSelection === "scissors")
   ) {
-    return win;
-  } else if (
-    (computerSelection === "paper" && playerSelection === "rock") ||
-    (computerSelection === "rock" && playerSelection === "scissors") ||
-    (computerSelection === "scissors" && playerSelection === "paper")
-  ) {
-    return lose;
+    return "win";
   } else {
-    alert("pick one item, please");
+    return "lose";
   }
 }
 
-// function game() {
-//   if (playRound(playerSelection, computerSelection === tie)) {
-//     i--;
-//     console.log(tie);
-//   } else if (playRound(playerSelection, computerSelection === win)) {
-//     playerScore++;
-//     console.log(win);
-//   } else if (playRound(playerSelection, computerSelection === lose)) {
-//     computerScore++;
-//     console.log(lose);
-//   } else {
-//     alert("pick an item");
-//   }
-//   console.log(
-//     "you picked " + playerSelection,
-//     "but",
-//     "computer picked " + computerSelection
-//   );
-// }
-// console.log("you got " + playerScore, "& computer got " + computerScore);
-// if (playerScore >= 3) {
-//   console.log("you won this round");
-// } else {
-//   console.log("you lose. play another around");
-// }
-// game(playerSelection, computerSelection);
+// game function
+function game() {
+  let computerScore = 0;
+  let playerScore = 0;
+
+  for (let i = 0; i < 5; i++) {
+    const computerSelection = computerPlay();
+    const result = playRound(playerSelection, computerSelection);
+
+    console.log(
+      `You picked ${playerSelection}, and the computer picked ${computerSelection}.`
+    );
+
+    if (result === "tie") {
+      console.log("It's a tie!");
+      i--;
+    } else if (result === "win") {
+      console.log("You win!");
+      playerScore++;
+    } else if (result === "lose") {
+      console.log("You lose!");
+      computerScore++;
+    }
+
+    console.log(
+      `You have ${playerScore} points, and the computer has ${computerScore} points.`
+    );
+
+    if (playerScore >= 3) {
+      console.log("You won this round!");
+      return;
+    } else if (computerScore >= 3) {
+      console.log("You lost. Play again!");
+      return;
+    }
+  }
+
+  console.log("Game over!");
+}
