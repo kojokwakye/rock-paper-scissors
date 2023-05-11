@@ -14,6 +14,7 @@ button.forEach((button) => {
     const playerSelection = e.target.id;
     const computerSelection = computerPlay();
     const result = playRound(playerSelection, computerSelection);
+    game(playerSelection);
     console.log(`Player: ${playerSelection}, Computer: ${computerSelection}`);
     console.log(result);
   });
@@ -45,7 +46,7 @@ function playRound(playerSelection, computerSelection) {
 }
 
 // game function
-function game() {
+function game(playerSelection) {
   let computerScore = 0;
   let playerScore = 0;
 
