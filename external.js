@@ -8,10 +8,13 @@ const win = "you win.";
 const lose = "you lose.";
 const tie = "it's a tie";
 
+let computerScore = 0;
+let playerScore = 0;
+
 const buttons = document.querySelectorAll("button");
 buttons.forEach((button) => {
-  button.addEventListener("click", (e) => {
-    const playerSelection = e.target.id;
+  button.addEventListener("click", () => {
+    const playerSelection = button.id;
     game(playerSelection);
   });
 });
@@ -26,47 +29,41 @@ function playRound(playerSelection, computerSelection) {
     (computerSelection === "paper" && playerSelection === "scissors")
   ) {
     return win;
-  } else if (
-    (computerSelection === "paper" && playerSelection === "rock") ||
-    (computerSelection === "rock" && playerSelection === "scissors") ||
-    (computerSelection === "scissors" && playerSelection === "paper")
-  ) {
-    return lose;
   } else {
-    alert("pick one item, please");
+    return lose;
   }
 }
 
 // game function
 function game(playerSelection) {
-  let computerScore = parseInt(0);
-  let playerScore = parseInt(0);
+  const computerSelection = computerPlay();
+  console.log(
+    "you picked " + playerSelection,
+    "&",
+    "computer picked " + computerSelection
+  );
+  const result = playRound(playerSelection, computerSelection);
 
-  for (let i = 0; i < 5; i++) {
-    const computerSelection = computerPlay();
-    console.log(
-      "you picked " + playerSelection,
-      "&",
-      "computer picked " + computerSelection
-    );
-
-    if (playRound(playerSelection, computerSelection) === tie) {
-      i--;
-      console.log(tie);
-    } else if (playRound(playerSelection, computerSelection) === win) {
-      playerScore++;
-      console.log(win, "you have", `${playerScore}`, "pts");
-    } else if (playRound(playerSelection, computerSelection) === lose) {
-      computerScore++;
-      console.log(lose, "computer has", `${computerScore}`, "pts");
-    } else {
-      alert("pick an item");
-    }
+  if (result === tie) {
+    console.log(tie);
+  } else if (result === win) {
+    playerScore++;
+    console.log(win);
+  } else {
+    computerScore++;
+    console.log(lose);
   }
   console.log("you got " + playerScore, "& computer got " + computerScore);
-  if (playerScore >= 3) {
+
+  if (playerScore === 5) {
     console.log("you won this round");
-  } else {
+    resetGame();
+  } else if (computerScore === 5) {
     console.log("you lose. play another around");
+    resetGame();
   }
+}
+function resetGame() {
+  playerScore = 0;
+  computerScore = 0;
 }
