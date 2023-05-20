@@ -4,8 +4,8 @@ function computerPlay() {
 }
 
 // scores
-const win = "you win";
-const lose = "you lose";
+const win = "you win.";
+const lose = "you lose.";
 const tie = "it's a tie";
 
 const buttons = document.querySelectorAll("button");
@@ -44,24 +44,24 @@ function game(playerSelection) {
 
   for (let i = 0; i < 5; i++) {
     const computerSelection = computerPlay();
+    console.log(
+      "you picked " + playerSelection,
+      "&",
+      "computer picked " + computerSelection
+    );
 
     if (playRound(playerSelection, computerSelection) === tie) {
       i--;
       console.log(tie);
     } else if (playRound(playerSelection, computerSelection) === win) {
       playerScore++;
-      console.log(win);
+      console.log(win, "you have", `${playerScore}`, "pts");
     } else if (playRound(playerSelection, computerSelection) === lose) {
       computerScore++;
-      console.log(lose);
+      console.log(lose, "computer has", `${computerScore}`, "pts");
     } else {
       alert("pick an item");
     }
-    console.log(
-      "you picked " + playerSelection,
-      "but",
-      "computer picked " + computerSelection
-    );
   }
   console.log("you got " + playerScore, "& computer got " + computerScore);
   if (playerScore >= 3) {
