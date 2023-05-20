@@ -8,79 +8,65 @@ const win = "you win";
 const lose = "you lose";
 const tie = "it's a tie";
 
-const button = document.querySelectorAll("button");
-button.forEach((button) => {
+const buttons = document.querySelectorAll("button");
+buttons.forEach((button) => {
   button.addEventListener("click", (e) => {
     const playerSelection = e.target.id;
-    const computerSelection = computerPlay();
-    const result = playRound(playerSelection, computerSelection);
     game(playerSelection);
-    console.log(`Player: ${playerSelection}, Computer: ${computerSelection}`);
-    console.log(result);
   });
 });
 
 // playround function
 function playRound(playerSelection, computerSelection) {
-  if (
-    playerSelection !== "rock" &&
-    playerSelection !== "paper" &&
-    playerSelection !== "scissors"
-  ) {
-    // Display an error message to the user
-    console.log("invalid input");
-    return;
-  }
-
   if (computerSelection === playerSelection) {
-    return "tie";
+    return tie;
   } else if (
     (computerSelection === "rock" && playerSelection === "paper") ||
     (computerSelection === "scissors" && playerSelection === "rock") ||
     (computerSelection === "paper" && playerSelection === "scissors")
   ) {
-    return "win";
+    return win;
+  } else if (
+    (computerSelection === "paper" && playerSelection === "rock") ||
+    (computerSelection === "rock" && playerSelection === "scissors") ||
+    (computerSelection === "scissors" && playerSelection === "paper")
+  ) {
+    return lose;
   } else {
-    return "lose";
+    alert("pick one item, please");
   }
 }
 
 // game function
 function game(playerSelection) {
-  let computerScore = 0;
-  let playerScore = 0;
+  let computerScore = parseInt(0);
+  let playerScore = parseInt(0);
 
   for (let i = 0; i < 5; i++) {
     const computerSelection = computerPlay();
-    const result = playRound(playerSelection, computerSelection);
 
-    console.log(
-      `You picked ${playerSelection}, and the computer picked ${computerSelection}.`
-    );
-
-    if (result === "tie") {
-      console.log("It's a tie!");
+    if (playRound(playerSelection, computerSelection) === tie) {
       i--;
-    } else if (result === "win") {
-      console.log("You win!");
+      console.log(tie);
+    } else if (playRound(playerSelection, computerSelection) === win) {
       playerScore++;
-    } else if (result === "lose") {
-      console.log("You lose!");
+      console.log(win);
+    } else if (playRound(playerSelection, computerSelection) === lose) {
       computerScore++;
+      console.log(lose);
+    } else {
+      alert("pick an item");
     }
-
     console.log(
-      `You have ${playerScore} points, and the computer has ${computerScore} points.`
+      "you picked " + playerSelection,
+      "but",
+      "computer picked " + computerSelection
     );
-
-    if (playerScore >= 3) {
-      console.log("You won this round!");
-      return;
-    } else if (computerScore >= 3) {
-      console.log("You lost. Play again!");
-      return;
-    }
   }
-
-  console.log("Game over!");
+  console.log("you got " + playerScore, "& computer got " + computerScore);
+  if (playerScore >= 3) {
+    console.log("you won this round");
+  } else {
+    console.log("you lose. play another around");
+  }
 }
