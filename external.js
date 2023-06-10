@@ -38,14 +38,7 @@ function playRound(playerSelection, computerSelection) {
 function game(playerSelection) {
   const computerSelection = computerPlay();
 
-  // // how to turn a console.log into a variable
-  // console.log(
-  //   "you picked " + playerSelection,
-  //   "&",
-  //   "computer picked " + computerSelection
-  // );
-
-  let testingConsole = `you picked ${playerSelection} and computer picked ${computerSelection}`;
+  let displayFinalResult = `you picked ${playerSelection} and computer picked ${computerSelection}`;
   playersChoices();
   const result = playRound(playerSelection, computerSelection);
 
@@ -60,8 +53,8 @@ function game(playerSelection) {
     computerScore++;
   }
 
-  // record
-  console.log("you got " + playerScore, "& computer got " + computerScore);
+  // for fixing trouble
+  // console.log("you got " + playerScore, "& computer got " + computerScore);
 
   updateScore();
   if (playerScore + computerScore === 5) {
@@ -78,9 +71,11 @@ function game(playerSelection) {
   }
 
   // display what the computer and player chooses
+
+  // the displayFinalResult disappears too quickly set timeout on it
   function playersChoices() {
     let choices = document.querySelector("#choices");
-    choices.textContent = testingConsole;
+    choices.textContent = displayFinalResult;
   }
 
   function updateScore() {
