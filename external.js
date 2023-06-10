@@ -37,15 +37,23 @@ function playRound(playerSelection, computerSelection) {
 // game function
 function game(playerSelection) {
   const computerSelection = computerPlay();
-  console.log(
-    "you picked " + playerSelection,
-    "&",
-    "computer picked " + computerSelection
-  );
+
+  // // how to turn a console.log into a variable
+  // console.log(
+  //   "you picked " + playerSelection,
+  //   "&",
+  //   "computer picked " + computerSelection
+  // );
+
+  let testingConsole = `you picked ${playerSelection} and computer picked ${computerSelection}`;
+  playersChoices();
   const result = playRound(playerSelection, computerSelection);
 
   if (result === tie) {
-    console.log(tie);
+    UpdateWinner(tie);
+    setTimeout(() => {
+      UpdateWinner("");
+    }, 3000);
   } else if (result === win) {
     playerScore++;
   } else {
@@ -58,18 +66,32 @@ function game(playerSelection) {
   updateScore();
   if (playerScore + computerScore === 5) {
     if (playerScore > computerScore) {
-      console.log("You won the game!");
+      UpdateWinner(`you got ${playerScore} so you won the game!`);
     } else if (playerScore < computerScore) {
-      console.log("You lost the game!");
+      UpdateWinner(`computer got ${computerScore} so you lost`);
     } else {
-      console.log("It's a tie!");
+      UpdateWinner(
+        `you got ${playerScore} and computer got ${computerScore} so it's a tie!`
+      );
     }
     reset();
   }
+
+  // display what the computer and player chooses
+  function playersChoices() {
+    let choices = document.querySelector("#choices");
+    choices.textContent = testingConsole;
+  }
+
   function updateScore() {
     let displayResults = document.querySelector("#displayResults");
     displayResults.textContent =
       "player: " + playerScore + " computer: " + computerScore;
+  }
+
+  function UpdateWinner(result) {
+    let displayWinner = document.querySelector("#displayWinner");
+    displayWinner.textContent = result;
   }
 
   function reset() {
@@ -78,5 +100,3 @@ function game(playerSelection) {
     updateScore();
   }
 }
-
-// function to input score into displayResults
