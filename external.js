@@ -48,28 +48,35 @@ function game(playerSelection) {
     console.log(tie);
   } else if (result === win) {
     playerScore++;
-    // console.log(win);
   } else {
     computerScore++;
-    // console.log(lose);
   }
+
   // record
   console.log("you got " + playerScore, "& computer got " + computerScore);
 
-  if (playerScore >= 3) {
-    console.log("you won this round");
-    reset();
-  } else if (computerScore >= 3) {
-    console.log("you lose. play another around");
+  updateScore();
+  if (playerScore + computerScore === 5) {
+    if (playerScore > computerScore) {
+      console.log("You won the game!");
+    } else if (playerScore < computerScore) {
+      console.log("You lost the game!");
+    } else {
+      console.log("It's a tie!");
+    }
     reset();
   }
-  let displayResults = document.querySelector("#displayResults");
-  displayResults.textContent =
-    "player: " + playerScore + " computer: " + computerScore;
-}
-function reset() {
-  playerScore = 0;
-  computerScore = 0;
+  function updateScore() {
+    let displayResults = document.querySelector("#displayResults");
+    displayResults.textContent =
+      "player: " + playerScore + " computer: " + computerScore;
+  }
+
+  function reset() {
+    playerScore = 0;
+    computerScore = 0;
+    updateScore();
+  }
 }
 
 // function to input score into displayResults
