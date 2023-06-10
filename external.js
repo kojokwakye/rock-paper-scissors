@@ -48,22 +48,28 @@ function game(playerSelection) {
     console.log(tie);
   } else if (result === win) {
     playerScore++;
-    console.log(win);
+    // console.log(win);
   } else {
     computerScore++;
-    console.log(lose);
+    // console.log(lose);
   }
+  // record
   console.log("you got " + playerScore, "& computer got " + computerScore);
 
-  if (playerScore === 5) {
+  if (playerScore >= 3) {
     console.log("you won this round");
-    resetGame();
-  } else if (computerScore === 5) {
+    reset();
+  } else if (computerScore >= 3) {
     console.log("you lose. play another around");
-    resetGame();
+    reset();
   }
+  let displayResults = document.querySelector("#displayResults");
+  displayResults.textContent =
+    "player: " + playerScore + " computer: " + computerScore;
 }
-function resetGame() {
+function reset() {
   playerScore = 0;
   computerScore = 0;
 }
+
+// function to input score into displayResults
