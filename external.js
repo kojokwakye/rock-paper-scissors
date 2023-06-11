@@ -37,39 +37,61 @@ function playRound(playerSelection, computerSelection) {
 // game function
 function game(playerSelection) {
   const computerSelection = computerPlay();
-  console.log(
-    "you picked " + playerSelection,
-    "&",
-    "computer picked " + computerSelection
-  );
+
+  let displayFinalResult = `you picked ${playerSelection} and computer picked ${computerSelection}`;
+  playersChoices();
   const result = playRound(playerSelection, computerSelection);
 
   if (result === tie) {
-    console.log(tie);
+    UpdateWinner(tie);
+    setTimeout(() => {
+      UpdateWinner("");
+    }, 3000);
   } else if (result === win) {
     playerScore++;
-    // console.log(win);
   } else {
     computerScore++;
-    // console.log(lose);
   }
-  // record
-  console.log("you got " + playerScore, "& computer got " + computerScore);
 
-  if (playerScore >= 3) {
-    console.log("you won this round");
-    reset();
-  } else if (computerScore >= 3) {
-    console.log("you lose. play another around");
+  // for fixing trouble
+  // console.log("you got " + playerScore, "& computer got " + computerScore);
+
+  updateScore();
+  if (playerScore + computerScore === 5) {
+    if (playerScore > computerScore) {
+      UpdateWinner(`you got ${playerScore} so you won the game!`);
+    } else if (playerScore < computerScore) {
+      UpdateWinner(`computer got ${computerScore} so you lost`);
+    } else {
+      UpdateWinner(
+        `you got ${playerScore} and computer got ${computerScore} so it's a tie!`
+      );
+    }
     reset();
   }
-  let displayResults = document.querySelector("#displayResults");
-  displayResults.textContent =
-    "player: " + playerScore + " computer: " + computerScore;
-}
-function reset() {
-  playerScore = 0;
-  computerScore = 0;
-}
 
-// function to input score into displayResults
+  // display what the computer and player chooses
+
+  // the displayFinalResult disappears too quickly set timeout on it?
+  function playersChoices() {
+    let choices = document.querySelector("#choices");
+    choices.textContent = displayFinalResult;
+  }
+
+  function updateScore() {
+    let displayResults = document.querySelector("#displayResults");
+    displayResults.textContent =
+      "player: " + playerScore + " computer: " + computerScore;
+  }
+
+  function UpdateWinner(result) {
+    let displayWinner = document.querySelector("#displayWinner");
+    displayWinner.textContent = result;
+  }
+
+  function reset() {
+    playerScore = 0;
+    computerScore = 0;
+    updateScore();
+  }
+}
