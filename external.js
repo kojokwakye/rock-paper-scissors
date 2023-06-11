@@ -72,7 +72,7 @@ function game(playerSelection) {
 
   // display what the computer and player chooses
 
-  // the displayFinalResult disappears too quickly set timeout on it
+  // the displayFinalResult disappears too quickly set timeout on it?
   function playersChoices() {
     let choices = document.querySelector("#choices");
     choices.textContent = displayFinalResult;
