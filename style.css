@@ -1,19 +1,39 @@
+html,
 body {
+  box-sizing: border-box;
+  margin: 0;
   height: 100%;
+  width: 100%;
+}
+
+body {
   background: #5ca4ea;
   color: white;
   font-family: "Space Mono", monospace;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
 }
 
 .box {
   height: 100vh;
-  /* display: flex; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.selections {
+  display: flex;
+  flex-direction: row;
 }
 
 button {
+  /* display: inline; */
   color: white;
   margin: 10px;
-  width: 350px;
+  width: 250px;
   height: 50px;
   cursor: pointer;
   background: transparent;
@@ -23,12 +43,17 @@ button {
 
 /* media query */
 
-/* @media only screen and (max-device-width: 480px) {
+@media screen and (max-device-width: 768px) {
   body {
     min-height: 100vh;
+    background: rgb(106, 37, 37);
+  }
+  .box {
+    /* ??? */
+  }
+
+  .selections {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
   }
-} */
+}
