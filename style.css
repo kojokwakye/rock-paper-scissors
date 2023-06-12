@@ -1,18 +1,34 @@
 body {
   height: 100%;
-  margin: 0;
+  background: #5ca4ea;
+  color: white;
+  font-family: "Space Mono", monospace;
 }
 
 .box {
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  /* display: flex; */
 }
 
 button {
-  height: 100px;
+  color: white;
   margin: 10px;
-  width: 50%;
+  width: 350px;
+  height: 50px;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid #d2dfec;
+  outline: none;
 }
+
+/* media query */
+
+/* @media only screen and (max-device-width: 480px) {
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+} */
