@@ -38,7 +38,7 @@ function playRound(playerSelection, computerSelection) {
 function game(playerSelection) {
   const computerSelection = computerPlay();
 
-  let displayFinalResult = `you picked ${playerSelection} and computer picked ${computerSelection}`;
+  let displaySelection = `you picked ${playerSelection} and computer picked ${computerSelection}`;
   playersChoices();
   const result = playRound(playerSelection, computerSelection);
 
@@ -59,29 +59,30 @@ function game(playerSelection) {
   updateScore();
   if (playerScore + computerScore === 5) {
     if (playerScore > computerScore) {
-      UpdateWinner(`you got ${playerScore} so you won the game!`);
+      UpdateWinner(`you got ${playerScore}. you won `);
     } else if (playerScore < computerScore) {
-      UpdateWinner(`computer got ${computerScore} so you lost`);
+      UpdateWinner(`computer got ${computerScore}. you lost`);
     } else {
-      UpdateWinner(
-        `you got ${playerScore} and computer got ${computerScore} so it's a tie!`
-      );
+      UpdateWinner();
+      // it's a tie
     }
     reset();
   }
 
   // display what the computer and player chooses
 
-  // the displayFinalResult disappears too quickly set timeout on it?
+  // the displaySelection disappears too quickly set timeout on it?
   function playersChoices() {
     let choices = document.querySelector("#choices");
-    choices.textContent = displayFinalResult;
+    choices.textContent = displaySelection;
   }
 
   function updateScore() {
-    let displayResults = document.querySelector("#displayResults");
-    displayResults.textContent =
-      "player: " + playerScore + " computer: " + computerScore;
+    let playerPoint = document.querySelector("#playerPoint");
+    playerPoint.textContent = playerScore;
+
+    let computerPoint = document.querySelector("#computerPoint");
+    computerPoint.textContent = computerScore;
   }
 
   function UpdateWinner(result) {
