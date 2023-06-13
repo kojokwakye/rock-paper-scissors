@@ -46,7 +46,7 @@ function game(playerSelection) {
     UpdateWinner(tie);
     setTimeout(() => {
       UpdateWinner("");
-    }, 2500);
+    }, 2000);
   } else if (result === win) {
     playerScore++;
   } else {
@@ -61,9 +61,9 @@ function game(playerSelection) {
     if (playerScore > computerScore) {
       UpdateWinnerWithDelay(`you got ${playerScore}. you won `, 2500);
     } else if (playerScore < computerScore) {
-      UpdateWinnerWithDelay(`computer got ${computerScore}. you lost`, 2500);
+      UpdateWinnerWithDelay(`computer: ${computerScore}. you lost`, 2500);
     } else {
-      UpdateWinnerWithDelay(), 2000;
+      UpdateWinnerWithDelay();
       // it's a tie
     }
     setTimeout(() => {
@@ -72,13 +72,12 @@ function game(playerSelection) {
   }
 
   // display what the computer and player chooses
-
-  // the displaySelection disappears too quickly set timeout on it?
   function playersChoices() {
     let choices = document.querySelector("#choices");
     choices.textContent = displaySelection;
   }
 
+  // update the score for each player
   function updateScore() {
     let playerPoint = document.querySelector("#playerPoint");
     playerPoint.textContent = playerScore;
@@ -87,18 +86,20 @@ function game(playerSelection) {
     computerPoint.textContent = computerScore;
   }
 
+  // display and declare winner
   function UpdateWinner(result) {
     let displayWinner = document.querySelector("#displayWinner");
     displayWinner.textContent = result;
   }
 
+  // results disappears too quickly after a round
   function UpdateWinnerWithDelay(result, delay) {
     UpdateWinner(result);
     setTimeout(() => {
       UpdateWinner("");
     }, delay);
   }
-
+  // reset scores after a round of game
   function reset() {
     playerScore = 0;
     computerScore = 0;

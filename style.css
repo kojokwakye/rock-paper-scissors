@@ -28,15 +28,10 @@ body {
   flex-direction: row;
   margin-bottom: 50px;
 }
-/* #choices {
-  text-align: center;
-  border-left: 1px solid rgb(9, 10, 9);
-} */
+
 #displayResults {
   text-align: center;
   margin: 20px 0;
-  /* border: 1px solid red; */
-  /* text-decoration: underline; */
   width: 500px;
   display: flex;
   justify-content: space-between;
