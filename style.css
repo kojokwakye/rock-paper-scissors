@@ -7,7 +7,8 @@ body {
 }
 
 body {
-  background: #5ca4ea;
+  /* background: #5ca4ea; */
+  background: rgb(106, 37, 37);
   color: white;
   font-family: "Space Mono", monospace;
   font-size: 30px;
