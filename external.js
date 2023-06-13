@@ -38,7 +38,7 @@ function playRound(playerSelection, computerSelection) {
 function game(playerSelection) {
   const computerSelection = computerPlay();
 
-  let displaySelection = `you picked ${playerSelection} and computer picked ${computerSelection}`;
+  let displaySelection = `player: ${playerSelection} - computer: ${computerSelection}`;
   playersChoices();
   const result = playRound(playerSelection, computerSelection);
 
@@ -46,7 +46,7 @@ function game(playerSelection) {
     UpdateWinner(tie);
     setTimeout(() => {
       UpdateWinner("");
-    }, 3000);
+    }, 2500);
   } else if (result === win) {
     playerScore++;
   } else {
@@ -59,14 +59,16 @@ function game(playerSelection) {
   updateScore();
   if (playerScore + computerScore === 5) {
     if (playerScore > computerScore) {
-      UpdateWinner(`you got ${playerScore}. you won `);
+      UpdateWinnerWithDelay(`you got ${playerScore}. you won `, 2500);
     } else if (playerScore < computerScore) {
-      UpdateWinner(`computer got ${computerScore}. you lost`);
+      UpdateWinnerWithDelay(`computer got ${computerScore}. you lost`, 2500);
     } else {
-      UpdateWinner();
+      UpdateWinnerWithDelay(), 2000;
       // it's a tie
     }
-    reset();
+    setTimeout(() => {
+      reset();
+    }, 2500);
   }
 
   // display what the computer and player chooses
@@ -88,6 +90,13 @@ function game(playerSelection) {
   function UpdateWinner(result) {
     let displayWinner = document.querySelector("#displayWinner");
     displayWinner.textContent = result;
+  }
+
+  function UpdateWinnerWithDelay(result, delay) {
+    UpdateWinner(result);
+    setTimeout(() => {
+      UpdateWinner("");
+    }, delay);
   }
 
   function reset() {

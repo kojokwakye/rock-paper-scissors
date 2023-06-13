@@ -10,10 +10,8 @@ body {
   background: #5ca4ea;
   color: white;
   font-family: "Space Mono", monospace;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; */
+  font-size: 30px;
+  text-align: center;
 }
 
 .box {
@@ -27,18 +25,42 @@ body {
 .selections {
   display: flex;
   flex-direction: row;
+  margin-bottom: 50px;
+}
+/* #choices {
+  text-align: center;
+  border-left: 1px solid rgb(9, 10, 9);
+} */
+#displayResults {
+  text-align: center;
+  margin: 20px 0;
+  /* border: 1px solid red; */
+  /* text-decoration: underline; */
+  width: 500px;
+  display: flex;
+  justify-content: space-between;
+}
+#playerPoint,
+#computerPoint {
+  font-size: 40px;
+  margin: 10px;
 }
 
 button {
   /* display: inline; */
   color: white;
-  margin: 10px;
+  font-size: 20px;
+  margin: 1em 0.8em;
   width: 250px;
-  height: 50px;
   cursor: pointer;
   background: transparent;
   border: 1px solid #d2dfec;
   outline: none;
+  padding: 1em 1.5em;
+}
+button:hover {
+  background-color: #22222286;
+  transition: 0.7s;
 }
 
 /* media query */
@@ -47,13 +69,35 @@ button {
   body {
     min-height: 100vh;
     background: rgb(106, 37, 37);
+    font-size: 16px;
+    text-align: center;
   }
-  .box {
-    /* ??? */
+  button {
+    /* display: inline; */
+    color: white;
+    font-size: 17px;
+    margin: 1em 0.8em;
+    width: 250px;
+    background: transparent;
+    border: 1px solid #d2dfec;
+    outline: none;
+    padding: 1em 1.5em;
   }
-
   .selections {
     display: flex;
     flex-direction: column;
+    margin-bottom: 30px;
+  }
+
+  #displayResults {
+    text-align: center;
+    width: 330px;
+    display: flex;
+    justify-content: space-between;
+  }
+  #playerPoint,
+  #computerPoint {
+    font-size: 25px;
+    margin: 10px;
   }
 }
