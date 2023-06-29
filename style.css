@@ -75,12 +75,12 @@ button:hover {
     text-align: center;
   }
   button {
-    font-size: 17px;
+    font-size: 1em;
   }
   .selections {
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
   }
 
   #displayResults {
@@ -91,7 +91,7 @@ button:hover {
   }
   #playerPoint,
   #computerPoint {
-    font-size: 25px;
+    font-size: 1em;
     margin: 7px;
   }
 }
