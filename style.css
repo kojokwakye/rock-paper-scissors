@@ -19,7 +19,7 @@ body {
   border-bottom: 1px solid black;
 }
 .header {
-  margin: 15px;
+  margin: 10px;
 }
 
 .box {
@@ -80,7 +80,7 @@ button:hover {
   .selections {
     display: flex;
     flex-direction: column;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
 
   #displayResults {
@@ -92,6 +92,6 @@ button:hover {
   #playerPoint,
   #computerPoint {
     font-size: 25px;
-    margin: 10px;
+    margin: 7px;
   }
 }
