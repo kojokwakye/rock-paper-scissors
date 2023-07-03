@@ -26,7 +26,7 @@ This project is a simple implementation of the classic game rock-paper-scissors 
 
 ## Desktop & Mobile view
 
-<p>
+<p align= "middle">
   <img src="images%20%26%20sketch%20of%20ui/Screen%20Shot%202023-07-03%20at%2017.14.11.png" height = "500px"width="200px" />
   <img src="images%20%26%20sketch%20of%20ui/Screenshot%202023-07-03%20at%2017-13-53%20rock%20paper%20%26%20scissors.png" height = "500px"width="600px"/> 
 </p>
