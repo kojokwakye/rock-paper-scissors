@@ -11,8 +11,9 @@ body {
   background: rgba(202, 113, 99, 0.72);
   color: black;
   font-family: "Space Mono", monospace;
-  font-size: 30px;
+  font-size: 25px;
   text-align: center;
+  /* min-height: 100vh; */
 }
 
 .title {
@@ -66,6 +67,19 @@ button:hover {
   transition: 0.7s;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a:hover {
+  color: rgba(10, 10, 10, 0.63);
+}
+.footer {
+  margin-top: 80px;
+  height: 40px;
+  border-bottom: 1px solid black;
+}
+
 /* media query */
 
 @media screen and (max-device-width: 768px) {
@@ -93,5 +107,10 @@ button:hover {
   #computerPoint {
     font-size: 1em;
     margin: 7px;
+  }
+
+  .footer {
+    /* margin: auto; */
+    margin-top: 50px;
   }
 }
