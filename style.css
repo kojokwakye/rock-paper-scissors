@@ -84,9 +84,17 @@ a:hover {
 
 @media screen and (max-device-width: 768px) {
   body {
-    min-height: 100vh;
+    /* min-height: 100vh; */
     font-size: 1em;
     text-align: center;
+  }
+
+  .box {
+    height: unset;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   button {
     font-size: 1em;
@@ -110,7 +118,6 @@ a:hover {
   }
 
   .footer {
-    /* margin: auto; */
-    margin-top: 50px;
+    margin-top: 60px;
   }
 }
